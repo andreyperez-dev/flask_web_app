@@ -1,0 +1,47 @@
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    username TEXT NOT NULL,
+    hash TEXT NOT NULL,
+    admin BOOLEAN
+);
+
+CREATE TABLE dog_clients2 (
+    id INTEGER PRIMARY KEY NOT NULL UNIQUE,
+    dog_name TEXT NOT NULL,
+    race_id INTEGER NOT NULL,
+    human_id INTEGER NOT NULL,
+    dog_image BLOB,
+    mimetype TEXT,
+    FOREIGN KEY (race_id) REFERENCES races(id),
+    FOREIGN KEY (human_id) REFERENCES human_clients(id)
+);
+
+CREATE TABLE races (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    race_name TEXT NOT NULL
+);
+
+CREATE TABLE human_clients (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    human_name TEXT NOT NULL,
+    phone_number TEXT NOT NULL
+);
+
+CREATE TABLE sessions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    dog_id INTEGER NOT NULL,
+    human_id INTEGER NOT NULL,
+    course_id INTEGER NOT NULL,
+    description TEXT NOT NULL,
+    level INTEGER,
+    status TEXT,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (dog_id) REFERENCES dog_clients(id),
+    FOREIGN KEY (human_id) REFERENCES human_clients(id),
+    FOREIGN KEY (course_id) REFERENCES courses(id)
+);
+
+CREATE TABLE courses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    course_name TEXT NOT NULL
+);
