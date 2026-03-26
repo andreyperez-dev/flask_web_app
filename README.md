@@ -1,5 +1,5 @@
 # Somos2 Web app
-#### Video Demo:  <[URL HERE](https://youtu.be/AJDeJZDBU1Q)>
+#### Video Demo:  <[URL HERE](https://youtu.be/_voNqma9EzA)>
 #### Description:
 
 This project is a Web app made in python using flask as framework and SQLite3 as db language that basically allows a company named Somos2 (a company that focuses in dog training)
